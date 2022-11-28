@@ -1,25 +1,22 @@
 class Plant < ApplicationRecord
+#plants GET /plants returns an array of all plants
     def index
-        plants=Plant.all
+        plants = Plant.all
         render json: plants
-
     end
-
+#Plants GET /plants/:id returns the first plant and second plant
     def show
-        plant=Plant.find(params[:id])
-        if plant
+        plant = Plant.find(params[:id])
         render json: plant
-        else
-            render json: {error: "Plant not found"}, status: 404
-        end
     end
 
+#Plants POST /plants creates a new plant
     def create
-        plant=Plant.create(plant_params)
-        render json: plant,status: :created
+        plant = Plant.create(plant_params)
+        render json: plant
     end
-    private
+ private 
     def plant_params
-        params.permit(:name,:image,:price)
-    end
+      params.permit(:name, :image, :price)
+    end 
 end

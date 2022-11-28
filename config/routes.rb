@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
-  resources: plants,only : [:index, :show, :create]
+#index route of plants
+  get '/plants', to: 'plants#index'
+#show route of id of plants
+  get '/plants/:id', to: 'plants#show'
+#create route of plants
+  post '/plants', to: 'plants#create'
 end
 
-  
-# Compare this snippet from app/controllers/plants_controller.rb:
+# Path: app/controllers/plants_controller.rb
+
